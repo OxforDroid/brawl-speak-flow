@@ -7,6 +7,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { BottomNav } from "@/components/BottomNav";
+import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
 
@@ -72,11 +74,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Brawl Lingo — Learn English with Brawl Stars" },
+      { name: "description", content: "Swipe through Brawler voice lines and learn English the fun way. Quiz mode, favorites and more." },
+      { name: "author", content: "Brawl Lingo" },
+      { name: "theme-color", content: "#1a1230" },
+      { property: "og:title", content: "Brawl Lingo — Learn English with Brawl Stars" },
+      { property: "og:description", content: "Swipe through voice lines, train your English and have fun." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -113,7 +116,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="min-h-screen pb-24">
+        <Outlet />
+      </div>
+      <BottomNav />
+      <Toaster theme="dark" position="top-center" richColors />
     </QueryClientProvider>
   );
 }
