@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { VOICE_LINES } from "@/data/characters";
 import { VoiceCard } from "@/components/VoiceCard";
 import { useFavorites } from "@/lib/favorites";
@@ -14,8 +14,9 @@ export const Route = createFileRoute("/random")({
 
 function RandomPage() {
   const { has, toggle } = useFavorites();
-  const [idx, setIdx] = useState(() => Math.floor(Math.random() * VOICE_LINES.length));
+  const [idx, setIdx] = useState(0);
   const [key, setKey] = useState(0);
+  useEffect(() => { setIdx(Math.floor(Math.random() * VOICE_LINES.length)); }, []);
   const line = VOICE_LINES[idx];
 
   const reroll = () => {

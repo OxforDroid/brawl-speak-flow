@@ -85,9 +85,18 @@ export function VoiceCard({ line, isActive, isFav, onToggleFav }: Props) {
                 animate={{ scale: 1, rotate: 0, opacity: 1 }}
                 exit={{ scale: 0.6, opacity: 0 }}
                 transition={{ type: "spring", stiffness: 220, damping: 18 }}
-                className={`relative text-[8rem] leading-none drop-shadow-[0_8px_30px_rgba(0,0,0,0.5)] ${playing ? "animate-pulse-glow rounded-full" : ""}`}
+                className={`relative drop-shadow-[0_8px_30px_rgba(0,0,0,0.5)] ${playing ? "animate-pulse-glow rounded-full" : ""}`}
               >
-                {line.emoji}
+                {line.image ? (
+                  <img
+                    src={line.image}
+                    alt={line.character}
+                    loading="lazy"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; (e.currentTarget.nextElementSibling as HTMLElement | null)?.style.setProperty("display","block"); }}
+                    className="h-44 w-44 object-contain"
+                  />
+                ) : null}
+                <span style={{ display: line.image ? "none" : "block" }} className="text-[8rem] leading-none">{line.emoji}</span>
               </motion.div>
             </AnimatePresence>
             <h2 className="text-3xl font-black text-white drop-shadow-md tracking-tight">{line.character}</h2>

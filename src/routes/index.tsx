@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { VOICE_LINES } from "@/data/characters";
 import { VoiceCard } from "@/components/VoiceCard";
 import { useFavorites } from "@/lib/favorites";
@@ -26,7 +26,8 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 function FeedPage() {
-  const lines = useMemo(() => shuffle(VOICE_LINES), []);
+  const [lines, setLines] = useState<typeof VOICE_LINES>(VOICE_LINES);
+  useEffect(() => { setLines(shuffle(VOICE_LINES)); }, []);
   const { has, toggle } = useFavorites();
   const [activeIdx, setActiveIdx] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
