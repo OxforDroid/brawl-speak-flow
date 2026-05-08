@@ -7,6 +7,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { BottomNav } from "@/components/BottomNav";
+import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
 
@@ -114,7 +116,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="min-h-screen pb-24">
+        <Outlet />
+      </div>
+      <BottomNav />
+      <Toaster theme="dark" position="top-center" richColors />
     </QueryClientProvider>
   );
 }
