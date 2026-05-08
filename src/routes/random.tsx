@@ -14,8 +14,9 @@ export const Route = createFileRoute("/random")({
 
 function RandomPage() {
   const { has, toggle } = useFavorites();
-  const [idx, setIdx] = useState(() => Math.floor(Math.random() * VOICE_LINES.length));
+  const [idx, setIdx] = useState(0);
   const [key, setKey] = useState(0);
+  useEffect(() => { setIdx(Math.floor(Math.random() * VOICE_LINES.length)); }, []);
   const line = VOICE_LINES[idx];
 
   const reroll = () => {
