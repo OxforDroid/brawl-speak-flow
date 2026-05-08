@@ -120,6 +120,9 @@ function RootComponent() {
         <Outlet />
       </div>
       <BottomNav />
+      <p className="fixed bottom-1 inset-x-0 text-center text-[9px] text-muted-foreground/60 px-4 pointer-events-none z-10">
+        Fan-made · Not affiliated with Supercell · Brawl Stars assets © Supercell
+      </p>
       <Toaster theme="dark" position="top-center" richColors />
     </QueryClientProvider>
   );
