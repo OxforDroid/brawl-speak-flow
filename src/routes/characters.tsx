@@ -72,7 +72,13 @@ function CharactersPage() {
                 className={`text-lg ${has(line.id) ? "text-red-400" : "text-white/60"}`}
               >♥</button>
             </div>
-            <div className="relative text-center text-5xl">{line.emoji}</div>
+            <div className="relative flex-1 flex items-center justify-center">
+              {line.image ? (
+                <img src={line.image} alt={line.character} loading="lazy" className="h-20 w-20 object-contain drop-shadow-lg" />
+              ) : (
+                <span className="text-5xl">{line.emoji}</span>
+              )}
+            </div>
             <div className="relative">
               <div className="text-xs font-black uppercase tracking-wider text-white">{line.character}</div>
               <div className="text-[11px] text-white/85 line-clamp-2 mt-0.5">"{line.english}"</div>
