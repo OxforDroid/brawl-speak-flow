@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { VOICE_LINES } from "@/data/characters";
 import { VoiceCard } from "@/components/VoiceCard";
 import { useFavorites } from "@/lib/favorites";
